@@ -22,11 +22,23 @@ export default function Contact() {
             <div className="space-y-6">
               <div>
                 <h4 className="text-sm font-semibold uppercase tracking-widest text-ink/50 mb-1">Location</h4>
-                <p className="text-ink">Bengaluru & Mysore, Karnataka</p>
+                <p className="text-ink mb-4">Silk City, Ramanagara, Karnataka 562159</p>
+                <div className="w-full h-48 rounded-2xl overflow-hidden shadow-sm border border-ink/10">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.970588636402!2d77.28259097507424!3d12.72733398756976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae4d3fa473d26b%3A0x447d3154697fa50f!2sAanya%20Sowmyaa%20celebrations%2C%20mini%20party%20hall%2C%20event%20planner!5e0!3m2!1sen!2sus!4v1708857418000!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Aanya Sowmyaa Celebrations Location"
+                  ></iframe>
+                </div>
               </div>
               <div>
                 <h4 className="text-sm font-semibold uppercase tracking-widest text-ink/50 mb-1">Follow Us</h4>
-                <a href="#" className="text-ink hover:underline underline-offset-4">@aanyasowmyaacelebrations</a>
+                <a href="https://www.instagram.com/aanyasowmyaa.celebrations/" target="_blank" rel="noopener noreferrer" className="text-ink hover:underline underline-offset-4">@aanyasowmyaacelebrations</a>
               </div>
             </div>
           </motion.div>
