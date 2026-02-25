@@ -27,8 +27,14 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-bg-warm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="relative py-24 bg-bg-warm overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-gradient-to-br from-orange-100/40 to-rose-100/40 blur-3xl" />
+        <div className="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-gradient-to-tr from-stone-200/40 to-orange-50/40 blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           <motion.div 
@@ -72,7 +78,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-white p-8 md:p-12 rounded-[2rem] shadow-sm"
+            className="bg-white/40 backdrop-blur-2xl border border-white/60 p-8 md:p-12 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.04)]"
           >
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -84,7 +90,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all"
+                    className="w-full bg-white/50 border border-white/40 rounded-xl px-4 py-3 focus:bg-white/80 focus:ring-2 focus:ring-ink/20 outline-none transition-all placeholder:text-ink/30"
                     placeholder="Jane Doe"
                   />
                 </div>
@@ -96,7 +102,7 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all"
+                    className="w-full bg-white/50 border border-white/40 rounded-xl px-4 py-3 focus:bg-white/80 focus:ring-2 focus:ring-ink/20 outline-none transition-all placeholder:text-ink/30"
                     placeholder="+91 98765 43210"
                   />
                 </div>
@@ -109,7 +115,7 @@ export default function Contact() {
                     name="eventType"
                     value={formData.eventType}
                     onChange={handleChange}
-                    className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all text-ink/80 appearance-none"
+                    className="w-full bg-white/50 border border-white/40 rounded-xl px-4 py-3 focus:bg-white/80 focus:ring-2 focus:ring-ink/20 outline-none transition-all text-ink/80 appearance-none"
                   >
                     <option>Wedding</option>
                     <option>Engagement</option>
@@ -125,7 +131,7 @@ export default function Contact() {
                     name="eventDate"
                     value={formData.eventDate}
                     onChange={handleChange}
-                    className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all text-ink/80"
+                    className="w-full bg-white/50 border border-white/40 rounded-xl px-4 py-3 focus:bg-white/80 focus:ring-2 focus:ring-ink/20 outline-none transition-all text-ink/80"
                   />
                 </div>
               </div>
@@ -138,7 +144,7 @@ export default function Contact() {
                     name="location"
                     value={formData.location}
                     onChange={handleChange}
-                    className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all"
+                    className="w-full bg-white/50 border border-white/40 rounded-xl px-4 py-3 focus:bg-white/80 focus:ring-2 focus:ring-ink/20 outline-none transition-all placeholder:text-ink/30"
                     placeholder="Bengaluru / Mysore"
                   />
                 </div>
@@ -149,7 +155,7 @@ export default function Contact() {
                     name="guests"
                     value={formData.guests}
                     onChange={handleChange}
-                    className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all"
+                    className="w-full bg-white/50 border border-white/40 rounded-xl px-4 py-3 focus:bg-white/80 focus:ring-2 focus:ring-ink/20 outline-none transition-all placeholder:text-ink/30"
                     placeholder="500"
                   />
                 </div>
@@ -162,14 +168,14 @@ export default function Contact() {
                   name="details"
                   value={formData.details}
                   onChange={handleChange}
-                  className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all resize-none"
+                  className="w-full bg-white/50 border border-white/40 rounded-xl px-4 py-3 focus:bg-white/80 focus:ring-2 focus:ring-ink/20 outline-none transition-all resize-none placeholder:text-ink/30"
                   placeholder="Tell us about your vision..."
                 ></textarea>
               </div>
 
               <button 
                 type="submit"
-                className="w-full bg-ink text-white rounded-xl py-4 uppercase tracking-widest text-sm font-medium hover:bg-ink/90 transition-colors"
+                className="w-full bg-ink text-white rounded-xl py-4 uppercase tracking-widest text-sm font-medium hover:bg-ink/90 transition-colors shadow-md"
               >
                 Send Inquiry
               </button>

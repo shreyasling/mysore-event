@@ -30,8 +30,14 @@ export default function Testimonials() {
   const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section id="testimonials" className="py-24 bg-blush/30 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section id="testimonials" className="relative py-24 bg-blush/30 overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[20%] left-[20%] w-[30%] h-[30%] rounded-full bg-gradient-to-br from-white/60 to-orange-50/60 blur-3xl" />
+        <div className="absolute bottom-[20%] right-[20%] w-[30%] h-[30%] rounded-full bg-gradient-to-tr from-stone-100/60 to-rose-50/60 blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Quote className="absolute top-0 left-4 md:left-20 w-32 h-32 text-ink/5 -z-10" />
         
         <div className="text-center mb-16">
@@ -53,7 +59,7 @@ export default function Testimonials() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5 }}
-              className="text-center px-8 md:px-16"
+              className="text-center px-8 md:px-16 py-12 bg-white/40 backdrop-blur-2xl border border-white/60 rounded-[3rem] shadow-[0_8px_32px_rgba(0,0,0,0.04)]"
             >
               <p className="text-xl md:text-3xl font-serif leading-relaxed text-ink/90 mb-10">
                 "{testimonials[currentIndex].text}"
@@ -72,14 +78,14 @@ export default function Testimonials() {
           <div className="flex justify-center gap-4 mt-12">
             <button 
               onClick={prev}
-              className="p-3 rounded-full border border-ink/20 hover:bg-ink hover:text-white transition-colors"
+              className="p-3 rounded-full bg-white/50 backdrop-blur-md border border-white/60 shadow-sm hover:bg-ink hover:text-white transition-all"
               aria-label="Previous testimonial"
             >
               <ChevronLeft size={20} />
             </button>
             <button 
               onClick={next}
-              className="p-3 rounded-full border border-ink/20 hover:bg-ink hover:text-white transition-colors"
+              className="p-3 rounded-full bg-white/50 backdrop-blur-md border border-white/60 shadow-sm hover:bg-ink hover:text-white transition-all"
               aria-label="Next testimonial"
             >
               <ChevronRight size={20} />

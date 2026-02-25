@@ -152,8 +152,14 @@ export default function Portfolio() {
   const displayedItems = showAll ? filteredItems : filteredItems.slice(0, 6);
 
   return (
-    <section id="portfolio" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="relative py-24 bg-white overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[30%] -left-[10%] w-[40%] h-[40%] rounded-full bg-gradient-to-br from-stone-100/80 to-orange-50/50 blur-3xl" />
+        <div className="absolute bottom-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-gradient-to-tl from-rose-50/80 to-orange-50/50 blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
             <motion.h2 
@@ -180,12 +186,12 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="inline-flex bg-bg-warm p-1 rounded-full border border-ink/10"
+              className="inline-flex bg-white/40 backdrop-blur-xl p-1.5 rounded-full border border-ink/10 shadow-[0_4px_16px_rgba(0,0,0,0.02)]"
             >
               <button
                 onClick={() => { setViewMode('photos'); setShowAll(false); }}
-                className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm tracking-wide transition-all ${
-                  viewMode === 'photos' ? 'bg-white shadow-sm text-ink' : 'text-ink/60 hover:text-ink'
+                className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm tracking-wide transition-all duration-300 ${
+                  viewMode === 'photos' ? 'bg-white shadow-sm text-ink font-medium' : 'text-ink/60 hover:text-ink'
                 }`}
               >
                 <ImageIcon size={16} />
@@ -193,8 +199,8 @@ export default function Portfolio() {
               </button>
               <button
                 onClick={() => { setViewMode('videos'); setShowAll(false); }}
-                className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm tracking-wide transition-all ${
-                  viewMode === 'videos' ? 'bg-white shadow-sm text-ink' : 'text-ink/60 hover:text-ink'
+                className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm tracking-wide transition-all duration-300 ${
+                  viewMode === 'videos' ? 'bg-white shadow-sm text-ink font-medium' : 'text-ink/60 hover:text-ink'
                 }`}
               >
                 <Video size={16} />
@@ -214,10 +220,10 @@ export default function Portfolio() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2 rounded-full text-sm tracking-wide transition-all ${
+                className={`px-5 py-2.5 rounded-full text-sm tracking-wide transition-all duration-300 border ${
                   activeCategory === category
-                    ? 'bg-ink text-white'
-                    : 'bg-bg-warm text-ink/70 hover:bg-ink/10'
+                    ? 'bg-ink text-white border-ink shadow-md'
+                    : 'bg-white/40 backdrop-blur-md text-ink/70 border-ink/10 hover:bg-white/80 hover:border-ink/20 shadow-sm'
                 }`}
               >
                 {category}
