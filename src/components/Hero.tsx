@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const images = [
-  'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop', // Elegant wedding setup
-  'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=2069&auto=format&fit=crop', // Floral decor
-  'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop', // Event lighting
+  'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=60&w=1600&auto=format&fit=crop&fm=webp', // Elegant wedding setup
+  'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=60&w=1600&auto=format&fit=crop&fm=webp', // Floral decor
+  'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=60&w=1600&auto=format&fit=crop&fm=webp', // Event lighting
 ];
 
 export default function Hero() {
@@ -29,6 +29,9 @@ export default function Hero() {
           animate={{ opacity: 0.6, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.5, ease: 'easeInOut' }}
+          referrerPolicy="no-referrer"
+          decoding="async"
+          fetchPriority={currentIndex === 0 ? "high" : "auto"}
         />
       </AnimatePresence>
 

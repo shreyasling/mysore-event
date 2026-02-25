@@ -1,6 +1,31 @@
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    eventType: 'Wedding',
+    eventDate: '',
+    location: '',
+    guests: '',
+    details: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const message = `*New Booking Inquiry* 🌟\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Event Type:* ${formData.eventType}\n*Event Date:* ${formData.eventDate || 'Not specified'}\n*Location:* ${formData.location || 'Not specified'}\n*Expected Guests:* ${formData.guests || 'Not specified'}\n*Details:* ${formData.details || 'None'}`;
+    
+    const url = `https://wa.me/919731573373?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <section id="contact" className="py-24 bg-bg-warm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,20 +74,28 @@ export default function Contact() {
             viewport={{ once: true }}
             className="bg-white p-8 md:p-12 rounded-[2rem] shadow-sm"
           >
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold uppercase tracking-widest text-ink/70">Name</label>
+                  <label className="text-xs font-semibold uppercase tracking-widest text-ink/70">Name *</label>
                   <input 
                     type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all"
                     placeholder="Jane Doe"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold uppercase tracking-widest text-ink/70">Phone</label>
+                  <label className="text-xs font-semibold uppercase tracking-widest text-ink/70">Phone *</label>
                   <input 
                     type="tel" 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
                     className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all"
                     placeholder="+91 98765 43210"
                   />
@@ -72,7 +105,12 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold uppercase tracking-widest text-ink/70">Event Type</label>
-                  <select className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all text-ink/80 appearance-none">
+                  <select 
+                    name="eventType"
+                    value={formData.eventType}
+                    onChange={handleChange}
+                    className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all text-ink/80 appearance-none"
+                  >
                     <option>Wedding</option>
                     <option>Engagement</option>
                     <option>Seemantha (Baby Shower)</option>
@@ -84,6 +122,9 @@ export default function Contact() {
                   <label className="text-xs font-semibold uppercase tracking-widest text-ink/70">Event Date</label>
                   <input 
                     type="date" 
+                    name="eventDate"
+                    value={formData.eventDate}
+                    onChange={handleChange}
                     className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all text-ink/80"
                   />
                 </div>
@@ -94,6 +135,9 @@ export default function Contact() {
                   <label className="text-xs font-semibold uppercase tracking-widest text-ink/70">Location</label>
                   <input 
                     type="text" 
+                    name="location"
+                    value={formData.location}
+                    onChange={handleChange}
                     className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all"
                     placeholder="Bengaluru / Mysore"
                   />
@@ -102,6 +146,9 @@ export default function Contact() {
                   <label className="text-xs font-semibold uppercase tracking-widest text-ink/70">Expected Guests</label>
                   <input 
                     type="number" 
+                    name="guests"
+                    value={formData.guests}
+                    onChange={handleChange}
                     className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all"
                     placeholder="500"
                   />
@@ -112,6 +159,9 @@ export default function Contact() {
                 <label className="text-xs font-semibold uppercase tracking-widest text-ink/70">Additional Details</label>
                 <textarea 
                   rows={4}
+                  name="details"
+                  value={formData.details}
+                  onChange={handleChange}
                   className="w-full bg-bg-warm border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-ink/20 outline-none transition-all resize-none"
                   placeholder="Tell us about your vision..."
                 ></textarea>
